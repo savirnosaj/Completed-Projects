@@ -1,0 +1,10 @@
+@Html.Partial("NavBar")
+
+<h1>This Activity is for @ViewBag.thursdaySportsday.SportChoice </h1>
+<h3>Date: @ViewBag.thursdaySportsday.PlayDate.ToString("MMMM d, yyyy")</h3>
+<!--  -->
+<div class="col-sm-6">
+    <h3>Guests:</h3>
+    @foreach (var g in ViewBag.guests)
+    {<p>@g.User.FirstName @g.User.LastName</p>}
+</div>

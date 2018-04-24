@@ -1,0 +1,42 @@
+@Html.Partial("NavBar")
+<h1>@ViewBag.firstname @ViewBag.lastname </h1>
+<h1>List of Events</h1>
+
+<table class="table table-striped">
+    <tr>
+        <th>Sport</th>
+        <th>Date</th>
+        <th>Guest</th>
+        <th>Action</th>
+    </tr>
+    <!--  -->
+    @foreach (var w in ViewBag.weddings)
+    {
+        <!--  -->
+        <tr>
+            <td><a href="show/@w.SportId">@w.SportChoice</a></td>
+            <td>@w.PlayDate.ToString("MMM d, yyyy")</td>
+            <td>@w.Guests.Count</td>
+            <td>
+                @if (@w.UserId == @ViewBag.userid) 
+                {
+                    <a href="delete/@w.SportId"> Delete </a>
+                }
+                else if (@ViewBag.attending.Contains(@w.SportId))
+                {
+                    <a href="unrsvp/@w.SportId"> Un-RSVP </a>
+                }
+                else
+                {
+                    <a href="rsvp/@w.SportId"> RSVP </a>
+                }
+            </td>
+        </tr>
+        <!--  -->
+    }
+</table>
+<!--  -->
+<br>
+<br>
+<!--  -->
+<a href="add" class="btn btn-primary"> Create New Event</a> 

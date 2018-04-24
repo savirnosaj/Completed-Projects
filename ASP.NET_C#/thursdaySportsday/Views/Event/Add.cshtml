@@ -1,0 +1,39 @@
+@Html.Partial("NavBar")
+@model thursdaySportsday.Models.Sport
+
+<h1> Enter Sport & Date</h1>
+<label for="chooseSport">Sports prefered by Students: </label>
+<br>
+<select class="col-sm-2" name="chooseSport">
+    <option value="basketball">Basketball</option>
+    <option value="football">Football</option>
+    <option value="kickball">Kickball</option>
+    <option value="soccer">Soccer</option>           
+</select>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<form asp-action="CreatePlayDate" method="post">
+    <div class="form-group row">
+        <label asp-for="SportChoice" class="col-sm-2 col-form-label">Enter Sport</label>
+        <div class="col-sm-3">
+            <input asp-for="SportChoice" class="form-control">
+        </div>
+        <div class="col-sm-2"><span class="rederror" asp-validation-for="SportChoice"></span></div>
+    </div>
+    <!--  -->
+    <div class="form-group row">
+        <label asp-for="PlayDate" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-3">
+            <input asp-for="PlayDate" class="form-control">
+        </div>
+        <div class="col-sm-2"><span class="rederror" asp-validation-for="PlayDate"></span></div>
+    </div>
+    <!--  -->
+    <input type="submit" value="Create" class="btn btn-success">
+    <!--  -->
+</form>

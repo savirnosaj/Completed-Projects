@@ -1,0 +1,53 @@
+<div style="text-align:center">
+  <h2>Shopping List</h2>
+</div>
+<!--  -->
+<div class="jumbotron" *ngIf="toggleForm">
+  <form #editForm="ngForm" (ngSubmit)="editItem(editForm)">
+    <h2 style="text-align:center">Edit Item</h2>
+    <div class="form-group">
+      <label for="">Name</label>
+      <!-- Name is required when working w/ NgModel -->
+      <input type="text" class="form-control" name="itemName" [ngModel]="selectedItem.itemName">
+    </div>
+    <div class="form-group">
+      <label for="">Quantity</label>
+      <input type="number" class="form-control" name="itemQuantity" [ngModel]="selectedItem.itemQuantity">
+    </div>
+    <button type="submit" name="addItemButton" class="btn btn-success">Save</button>
+  </form>
+</div>
+<!--  -->
+<div class="container">
+  <div class="jumbotron">
+    <div *ngFor="let item of shoppingItemList" class="row">
+      <!--  -->
+      <div class="col-md-3">
+        <h3>Item</h3>
+        {{item.itemName}}
+      </div>
+      <!--  -->
+      <div class="col-md-3">
+        <h3>Quantity</h3>
+        {{item.itemQuantity}}
+      </div>
+      <!--  -->
+      <div class="col-md-2">
+        <h3>Bought</h3>
+        <input type="checkbox" name="" [checked]="item.itemBought" (click)="updateItemCheckbox(item)">
+      </div>
+      <!--  -->
+      <div class="col-md-2">
+        <h3>Edit</h3>
+        <button type="button" class="btn btn-primary" name="editButton" (click)="showEditForm(item)" [disabled]="toggleForm">Edit</button>
+      </div>
+      <!--  -->
+      <div class="col-md-2">
+        <h3>Delete</h3>
+        <button type="button" class="btn btn-danger" name="deleteButton" (click)="deleteItem(item._id)">Delete</button>
+      </div>
+      <br>
+      <!--  -->
+    <br></div>
+  </div>
+</div>
